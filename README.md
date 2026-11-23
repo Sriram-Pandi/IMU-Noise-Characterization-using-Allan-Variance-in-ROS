@@ -30,3 +30,9 @@ This project delves deep into the intricacies of characterizing the noise in Ine
    - Structured the GitHub repository to ensure clarity and ease of access, segregating ROS drivers, analysis scripts, and the final report.
 
 By the conclusion of this project, I gained a comprehensive understanding of IMU noise profiles and their implications. The Allan Variance technique proved instrumental in deriving deeper insights into the nuances of IMU data, paving the way for better-informed decisions in robotics sensing and navigation applications.
+
+## Source layout and launch
+
+See the [ROS 1 driver](src/imu_driver), [analysis scripts and sample MATLAB data](src/analysis/analysis_programs), and [lab report](src/analysis/RSN-Lab-3_Report_updated.pdf).
+
+In a built ROS 1 catkin workspace, use `roslaunch imu_driver driver.launch serial_port:=/dev/ttyUSB0`. Replace the example with the connected IMU’s serial device.
