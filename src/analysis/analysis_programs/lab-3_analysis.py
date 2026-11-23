@@ -7,15 +7,10 @@ Original file is located at
     https://colab.research.google.com/drive/16JRQXWEeNRpkxYKBsZCtAPpkAmiMwEqU
 """
 
-from google.colab import drive
-drive.mount('/content/drive')
+import argparse
 
-pip install bagpy
 
-pip install distfit
 
-import bagpy
-from bagpy import bagreader
 import pandas as pd
 import seaborn as sea
 from matplotlib import pyplot as plt
@@ -28,7 +23,9 @@ from fitter import Fitter, get_common_distributions
 import distfit
 
 # Commented out IPython magic to ensure Python compatibility.
-imucsv = pd.read_csv('/content/drive/MyDrive/LAB3/sri15finalmindata_2022-10-22-19-38-08/imu.csv')
+parser = argparse.ArgumentParser(description='Analyze an exported IMU CSV.')
+parser.add_argument('csv', help='Path to the exported IMU CSV')
+imucsv = pd.read_csv(parser.parse_args().csv)
 
 x = imucsv['IMU.orientation.x']
 y = imucsv['IMU.orientation.y'] 
@@ -64,87 +61,62 @@ pitch = pitch_y*(180/np.pi)
 yaw = yaw_z*(180/np.pi) 
 
 
-print("Standard Deviation of roll is % s "
-#                 % (statistics.stdev(roll)))
+print("Standard Deviation of roll is % s " % (statistics.stdev(roll)))
 print(".....................................................................")
-print("Mean of roll is % s "
-#                 % (statistics.mean(roll)))
+print("Mean of roll is % s " % (statistics.mean(roll)))
 print(".....................................................................")
 
-print("Standard Deviation of pitch is % s "
-#                 % (statistics.stdev(pitch)))
+print("Standard Deviation of pitch is % s " % (statistics.stdev(pitch)))
 print(".....................................................................")
-print("Mean of pitch is % s "
-#                 % (statistics.median(pitch)))
+print("Mean of pitch is % s " % (statistics.median(pitch)))
 print(".....................................................................")
 
-print("Standard Deviation of yaw is % s "
-#                 % (statistics.stdev(yaw)))
+print("Standard Deviation of yaw is % s " % (statistics.stdev(yaw)))
 print(".....................................................................")
-print("Mean of yaw is % s "
-#                 % (statistics.mean(yaw)))
+print("Mean of yaw is % s " % (statistics.mean(yaw)))
 print(".....................................................................")
 
-print("Standard Deviation of angular-velocity_x is % s "
-#                 % (statistics.stdev(imucsv['IMU.angular_velocity.x'])))
+print("Standard Deviation of angular-velocity_x is % s " % (statistics.stdev(imucsv['IMU.angular_velocity.x'])))
 print(".....................................................................")
-print("Mean of angular-velocity_x is % s "
-#                 % (statistics.mean(imucsv['IMU.angular_velocity.x'])))
+print("Mean of angular-velocity_x is % s " % (statistics.mean(imucsv['IMU.angular_velocity.x'])))
 print(".....................................................................")
 
-print("Standard Deviation of angular-velocty_y is % s "
-#                 % (statistics.stdev(imucsv['IMU.angular_velocity.y'])))
+print("Standard Deviation of angular-velocty_y is % s " % (statistics.stdev(imucsv['IMU.angular_velocity.y'])))
 print(".....................................................................")
-print("Mean of angular-velocity_y is % s "
-#                 % (statistics.mean(imucsv['IMU.angular_velocity.y'])))
+print("Mean of angular-velocity_y is % s " % (statistics.mean(imucsv['IMU.angular_velocity.y'])))
 print(".....................................................................")
 
-print("Standard Deviation of angular-velocty_z is % s "
-#                 % (statistics.stdev(imucsv['IMU.angular_velocity.z'])))
+print("Standard Deviation of angular-velocty_z is % s " % (statistics.stdev(imucsv['IMU.angular_velocity.z'])))
 print(".....................................................................")
-print("Mean of angular-velocity_z is % s "
-#                 % (statistics.mean(imucsv['IMU.angular_velocity.z'])))
+print("Mean of angular-velocity_z is % s " % (statistics.mean(imucsv['IMU.angular_velocity.z'])))
 print(".....................................................................")
 
-print("Standard Deviation of linear-acceleration_x is % s "
-#                 % (statistics.stdev(imucsv['IMU.linear_acceleration.x'])))
+print("Standard Deviation of linear-acceleration_x is % s " % (statistics.stdev(imucsv['IMU.linear_acceleration.x'])))
 print(".....................................................................")
-print("Mean of linear-acceleration_x is % s "
-#                 % (statistics.mean(imucsv['IMU.linear_acceleration.x'])))
+print("Mean of linear-acceleration_x is % s " % (statistics.mean(imucsv['IMU.linear_acceleration.x'])))
 print(".....................................................................")
-print("Standard Deviation of linear-acceleration_y is % s "
-#                 % (statistics.stdev(imucsv['IMU.linear_acceleration.y'])))
+print("Standard Deviation of linear-acceleration_y is % s " % (statistics.stdev(imucsv['IMU.linear_acceleration.y'])))
 print(".....................................................................")
-print("Mean of linear-acceleration_y is % s "
-#                 % (statistics.mean(imucsv['IMU.linear_acceleration.y'])))
+print("Mean of linear-acceleration_y is % s " % (statistics.mean(imucsv['IMU.linear_acceleration.y'])))
 print(".....................................................................")
-print("Standard Deviation of linear-acceleration_z is % s "
-#                 % (statistics.stdev(imucsv['IMU.linear_acceleration.z'])))
+print("Standard Deviation of linear-acceleration_z is % s " % (statistics.stdev(imucsv['IMU.linear_acceleration.z'])))
 print(".....................................................................")
-print("Mean of linear-acceleration_z is % s "
-#                 % (statistics.mean(imucsv['IMU.linear_acceleration.z'])))
+print("Mean of linear-acceleration_z is % s " % (statistics.mean(imucsv['IMU.linear_acceleration.z'])))
 print(".....................................................................")
 
-print("Standard Deviation of MagField_x is % s "
-#                 % (statistics.stdev(imucsv['MagField.magnetic_field.x'])))
+print("Standard Deviation of MagField_x is % s " % (statistics.stdev(imucsv['MagField.magnetic_field.x'])))
 print(".....................................................................")
-print("Mean of MagField_x is % s "
-#                 % (statistics.mean(imucsv['MagField.magnetic_field.x'])))
+print("Mean of MagField_x is % s " % (statistics.mean(imucsv['MagField.magnetic_field.x'])))
 print(".....................................................................")
-print("Standard Deviation of MagField_y is % s "
-#                 % (statistics.stdev(imucsv['MagField.magnetic_field.y'])))
+print("Standard Deviation of MagField_y is % s " % (statistics.stdev(imucsv['MagField.magnetic_field.y'])))
 print(".....................................................................")
-print("Mean of MagField_y is % s "
-#                 % (statistics.mean(imucsv['MagField.magnetic_field.y'])))
+print("Mean of MagField_y is % s " % (statistics.mean(imucsv['MagField.magnetic_field.y'])))
 print(".....................................................................")
-print("Standard Deviation of MagField_z is % s "
-#                 % (statistics.stdev(imucsv['MagField.magnetic_field.z'])))
+print("Standard Deviation of MagField_z is % s " % (statistics.stdev(imucsv['MagField.magnetic_field.z'])))
 print(".....................................................................")
-print("Mean of MagField_z is % s "
-#                 % (statistics.mean(imucsv['MagField.magnetic_field.z'])))
+print("Mean of MagField_z is % s " % (statistics.mean(imucsv['MagField.magnetic_field.z'])))
 print(".....................................................................")
 
-pip install Fitter
 
 # fitter
 from distfit import distfit
