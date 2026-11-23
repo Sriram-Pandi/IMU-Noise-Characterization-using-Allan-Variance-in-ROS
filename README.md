@@ -36,3 +36,7 @@ By the conclusion of this project, I gained a comprehensive understanding of IMU
 See the [ROS 1 driver](src/imu_driver), [analysis scripts and sample MATLAB data](src/analysis/analysis_programs), and [lab report](src/analysis/RSN-Lab-3_Report_updated.pdf).
 
 In a built ROS 1 catkin workspace, use `roslaunch imu_driver driver.launch serial_port:=/dev/ttyUSB0`. Replace the example with the connected IMU’s serial device.
+
+## Run the offline Python analysis
+
+Install pandas, seaborn, Matplotlib, NumPy, scikit-learn, fitter, and distfit into your environment. Run `python src/analysis/analysis_programs/lab-3_analysis.py PATH_TO_IMU_CSV`. The input is an exported IMU CSV with orientation, timing, angular velocity, linear acceleration, and magnetic field columns. The original Python input CSV is external. The MATLAB sample and scripts are separate artifacts in the same analysis directory.
